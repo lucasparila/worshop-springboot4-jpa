@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import br.com.edu.ifsp.lucasparila.course.entities.Category;
 import br.com.edu.ifsp.lucasparila.course.entities.Order;
+import br.com.edu.ifsp.lucasparila.course.entities.Product;
 import br.com.edu.ifsp.lucasparila.course.entities.User;
 import br.com.edu.ifsp.lucasparila.course.entities.enums.OrderStatus;
 import br.com.edu.ifsp.lucasparila.course.repositories.CategoryRepository;
 import br.com.edu.ifsp.lucasparila.course.repositories.OrderRepository;
+import br.com.edu.ifsp.lucasparila.course.repositories.ProductRepository;
 import br.com.edu.ifsp.lucasparila.course.repositories.UserRepository;
 
 @Configuration
@@ -29,6 +31,9 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@Autowired
+	private ProductRepository productRepository;
+	
 	
 	
 	@Override
@@ -38,6 +43,14 @@ public class TestConfig implements CommandLineRunner {
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computers");
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		
+		Product p1 = new Product(null, "The Lord of the Rings", "Nec in sapien sem sollicitudin dolor, molestie egestas nisl, ipsum.", 90.5, "" );
+		Product p2 = new Product(null, "Smart TV", "Sit vulputate sed elit in neque in eget cursus adipiscing.", 2190.0, "" );
+		Product p3 = new Product(null, "Macbook Pro", "Mauris id nulla sit fames quis tempus diam quis nunc..", 1250.0, "" );
+		Product p4 = new Product(null, "PC Gamer", "Auctor risus amet risus, malesuada pharetra, volutpat a, egestas vehicula.", 1200.0, "" );
+		Product p5 = new Product(null, "Rails for Dummies", "Cursus dictumst volutpat integer tellus a senectus vel pellentesque pellentesque.", 100.99, "" );
+		
+		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 		
 		User u1 = new User (null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
 		User u2 = new User (null, "Alex Green", "alex@gmail.com", "977777777", "123456");
